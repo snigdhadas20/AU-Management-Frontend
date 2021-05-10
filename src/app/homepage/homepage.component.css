@@ -1,0 +1,68 @@
+.btn-group button {
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  margin-left: 100px;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+
+
+.content {
+padding: 16px;
+background-color: lightblue;
+padding-top: 15px;
+
+height: auto;
+   
+}
+
+.example-spacer {
+flex: 1 1 auto;
+}
+
+
+.mat {
+box-shadow: darkslategrey 0 0 5px;
+width: auto;
+  height: auto;
+}
+
+
+.toolbar {
+
+width: auto;
+height: 50px;
+
+}
+
+.mat-form-field + .mat-form-field {
+margin-left: 8px;
+}
+table {
+  width: 100%;
+}
+.mat-elevation-z8{
+  width:100%;
+}
+.search-div{
+  margin: 10px 10px 10px 10px;
+}

@@ -1,0 +1,42 @@
+<form [formGroup]="createForm" style="width: 500px; height:500px">
+    <div>
+        <label>Create Opportunity </label>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label >Date</mat-label>
+        <input matInput placeholder="Date" formControlName="date"  [ngClass]="{'is-invalid':createForm.get('date').touched && createForm.get('date').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label >Post</mat-label>
+        <input matInput placeholder="Post" formControlName="post"  [ngClass]="{'is-invalid':createForm.get('post').touched && createForm.get('post').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label>Skill</mat-label>
+        <input matInput placeholder="Skill" formControlName="skill" [ngClass]="{'is-invalid':createForm.get('skill').touched && createForm.get('skill').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label>Location</mat-label>
+        <input matInput placeholder="Location" formControlName="location" [ngClass]="{'is-invalid':createForm.get('location').touched && createForm.get('location').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label>Minimun Experience</mat-label>
+        <input matInput type="number" min="0" max="5" placeholder="MinimunExperience" formControlName="minExperience" [ngClass]="{'is-invalid':createForm.get('minExperience').touched && createForm.get('minExperience').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="Desciption" formControlName="desc" [ngClass]="{'is-invalid':createForm.get('desc').touched && createForm.get('desc').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="outline" style="padding: 5px;width: 400px;">
+        <mat-label>Hiring Manager</mat-label>
+        <input matInput placeholder="HiringManager" formControlName="hiringManager" [ngClass]="{'is-invalid':createForm.get('hiringManager').touched && createForm.get('hiringManager').invalid}" required/>
+    </mat-form-field>
+    <mat-divider></mat-divider>
+    <button mat-raised-button color="primary" [disabled]="!createForm.valid" (click)="addOpportunity()">Create</button>
+</form>

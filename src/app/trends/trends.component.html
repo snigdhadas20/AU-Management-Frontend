@@ -1,0 +1,53 @@
+<div class="form"><a  (click)="goback()"  style="cursor: pointer;padding-left: 10px;padding: 5px;">
+    <span class="material-icons">dashboard</span><span style="font-size: 25px;font-family: 'Lato', sans-serif;">
+        Back To HomePage
+    </span></a>
+</div>
+<mat-divider style="border-top-color:lightblue;border-width: 3px;"></mat-divider>
+
+<mat-grid-list cols="2" rowHeight="300px"   md-gutter-gt-sm="0px" >
+    <mat-grid-tile class="col">
+        <ngx-charts-bar-vertical
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="arr2"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel1"
+        [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+    </mat-grid-tile>
+    <mat-grid-tile class="col">
+        <ngx-charts-bar-vertical
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="arr1"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel2"
+        [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+    </mat-grid-tile>
+</mat-grid-list>  
+<mat-grid-list cols="1" rowHeight="300px"   md-gutter-gt-sm="0px" >
+    <mat-grid-tile class="col">
+        <ngx-charts-bar-vertical
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="arr3"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel3"
+        [yAxisLabel]="yAxisLabel">
+        </ngx-charts-bar-vertical>
+    </mat-grid-tile>
+</mat-grid-list> 

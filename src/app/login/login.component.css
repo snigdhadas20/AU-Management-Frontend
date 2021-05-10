@@ -1,0 +1,29 @@
+.social-btn-icon{
+    height: 18px;
+    margin-left: 17px;
+    margin-bottom: -3px;
+}
+
+.login-Btn{
+    margin-left: 80%;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: aliceblue;
+    border: 2px solid black;
+    height: 40px;
+}
+.container{
+    height: 10%;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+.image{
+    height:37em; 
+    background-size:cover;
+    width:auto;
+    background-image:url('C:\Users\hp\Desktop\Management\src\assets\images\Job-Seekers-Header3.jpg');
+    background-position:50% 50%;
+  }

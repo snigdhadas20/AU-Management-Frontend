@@ -1,0 +1,17 @@
+.editdata{
+    position: relative;
+    top: 100px;
+    left: 300px;
+    
+}
+
+.form{
+    height: 100%;
+    background-color: lightblue;
+}
+.ticket-details{
+    position: fixed;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%,-50%);
+}

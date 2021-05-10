@@ -1,0 +1,36 @@
+<a  (click)="goback()"  style="cursor: pointer;padding-left: 10px;padding: 5px;">
+    <span class="material-icons">dashboard</span><span style="font-size: 25px;font-family: 'Lato', sans-serif;">
+        Back To HomePage
+    </span></a>
+
+
+<form class="form" [formGroup]="opportunityForm">
+    <div *ngFor="let ticket of received_data">
+    <mat-card style="width: 700px;margin-left: 15%;" class="ticket-details">
+        
+        <mat-card-title style="padding: 10px;">Opportunity Details</mat-card-title>
+
+        <mat-card-subtitle style="padding: 5px;padding-left: 10px;">Opportunity Date:{{ticket.date}}  </mat-card-subtitle>
+        <mat-card-subtitle style="padding-left: 10px;font-size: 20px;font-weight: 500;">Post:{{ticket.post}}</mat-card-subtitle>
+
+        <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label style="font-size: 20px;font-weight: 600;">Skill: </mat-label>
+            <textarea matNativeControl required matInput style="font-size: 15px;" formControlName="skill" [ngClass]="{'is-invalid':opportunityForm.get('skill').touched && opportunityForm.get('skill').invalid}" required>{{ticket.skill}} </textarea></mat-form-field><br/>
+        
+        <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-label style="font-size: 20px;font-weight: 600;">Description: </mat-label>
+            <textarea matNativeControl required matInput style="font-size: 15px;" formControlName="desc" [ngClass]="{'is-invalid':opportunityForm.get('desc').touched && opportunityForm.get('desc').invalid}" required>{{ticket.desc}} </textarea></mat-form-field><br/>
+
+
+        <mat-form-field appearance="outline" style="width:400px;height: 50px;padding: 10px;">
+            <mat-label style="font-size: 20px;">Minimum Experience: </mat-label>
+            <textarea matNativeControl required matInput style="font-size: 15px;" formControlName="minExperience" [ngClass]="{'is-invalid':opportunityForm.get('minExperience').touched && opportunityForm.get('minExperience').invalid}" required>{{ticket.minExperience}} </textarea>
+        </mat-form-field><br><br>
+        <mat-card-subtitle style="padding: 5px;padding-left: 10px;">Hiring Manager:{{ticket.hiringManager}}  </mat-card-subtitle>
+        <mat-card-subtitle style="padding: 5px;padding-left: 10px;">Location:{{ticket.location}} </mat-card-subtitle>
+        <mat-card-actions style="padding: 10px;">
+            <button mat-raised-button color="primary" [disabled]="!opportunityForm.valid" (click)="updateOpportunity()">Update</button>
+        </mat-card-actions>
+    </mat-card> 
+    </div>
+</form>

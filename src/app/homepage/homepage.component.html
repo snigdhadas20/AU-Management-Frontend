@@ -1,0 +1,86 @@
+
+<mat-toolbar>
+    <span style="padding: 5px;font-size: 30px;font-family: 'Lato', sans-serif;font-weight: 450;">Opportunity Management System</span>
+    <span class="example-spacer"></span>
+  
+    <button (click)="openCreateOpportunity()" style="background-color: lightblue;color: black;margin-right: 20px;padding: 12px;border-style: solid;border-radius: 3px;">Create Opportunity</button>
+    <button (click)="openTrends()"  style="background-color: lightblue;color: black;margin-right: 20px;padding: 12px;border-style: solid;border-radius: 3px;">Trends</button>
+    <a (click)="logOut()" mat-raised-button color="accent" style="color: black;border-style: solid;border-radius: 1px;" >LogOut</a>
+</mat-toolbar>
+<mat-divider style="border-top-color:lightblue;border-width: 3px;"></mat-divider>
+
+<div class="search-div">
+      <mat-form-field class="search-form-field" floatLabel="never" appearance="outline"> 
+       
+   
+        <input   matInput type="text" [(ngModel)]="searchKey" placeholder="Search " autocomplete="off"  (keyup)="applyFilter()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()">
+        <mat-icon>close</mat-icon>
+    </button> 
+     
+    </mat-form-field>
+    
+
+    </div>
+    <!----<mat-divider style="border-top-color:lightblue;border-width: 3px;"></mat-divider>---->
+
+<div class="mat-elevation-z8">
+  
+  <mat-table [dataSource]="listData"  matSort>
+
+    <ng-container matColumnDef="index">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header style="font-size: 17px;color: black"> Index </mat-header-cell>
+      <mat-cell *matCellDef="let name; let i = index;">{{i}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header style="font-size: 17px;color: black">Date of Joining</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Post">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header style="font-size: 17px;color: black">Post</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.post}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Skill">
+      <mat-header-cell *matHeaderCellDef  mat-sort-header style="font-size: 17px;color: black">Skill</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.skill}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Location">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 17px;color: black">Location</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.location}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Minimum Experience">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 17px;color: black">Min Experience</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.minExperience}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 17px;color: black">Description</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.desc}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Hiring Manager">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 17px;color: black">Hiring Manager</mat-header-cell>
+      <mat-cell *matCellDef="let name">{{name.hiringManager}}</mat-cell>
+    </ng-container>
+    
+    <ng-container class="actions" matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          
+          <button  mat-icon-button (click)="onDelete(row)"color="warn"><mat-icon>delete_outline</mat-icon></button> 
+          <button  mat-icon-button (click)="onInfo(row)"color="warn"><mat-icon>info</mat-icon></button> 
+      </mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+</div>
+  
+  
+  <mat-divider style="border-top-color:lightblue;border-width: 3px;"></mat-divider>
+  
+
+
+
+<router-outlet></router-outlet>
