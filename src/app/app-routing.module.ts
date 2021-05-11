@@ -5,18 +5,16 @@ import { LoginComponent } from './login/login.component';
 import {EditOpportunityComponent} from './edit-opportunity/edit-opportunity.component';
 import { DeleteOpportunityComponent } from './delete-opportunity/delete-opportunity.component';
 import {TrendsComponent} from './trends/trends.component';
+import { GuardGuard } from './guard.guard';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    pathMatch:'full',
-    redirectTo:'/login',
-  
-  },
+ 
   {
     path: 'homepage',
     component: HomepageComponent,
+      canActivate:[GuardGuard]
+
   },
   {
     path: 'login',
@@ -25,16 +23,25 @@ const routes: Routes = [
   {
     path:'edit-opportunity',
     component:EditOpportunityComponent,
+    canActivate:[GuardGuard]
   },
 
   {
     path:'delete-opportunity',
     component:DeleteOpportunityComponent,
+    canActivate:[GuardGuard]
   },
   
   {
     path:'trends',
     component:TrendsComponent,
+    canActivate:[GuardGuard]
+  },
+  {
+    path: '**',
+    pathMatch:'full',
+    redirectTo:'login',
+  
   },
 ];
 

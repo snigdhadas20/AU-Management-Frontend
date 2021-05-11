@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateOpportunityComponent } from '../create-opportunity/create-opportunity.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {Opportunity} from'../model/Opportunity';
-
+import {NgZone} from  '@angular/core' ;
 import { MatTableDataSource } from '@angular/material/table';
 
 import {ManagementService} from '../management.service';
@@ -12,6 +12,7 @@ import { MatSort } from '@angular/material/sort';
 import { ViewChild } from '@angular/core';
 import { EditOpportunityComponent } from '../edit-opportunity/edit-opportunity.component';
 import {DeleteOpportunityComponent} from '../delete-opportunity/delete-opportunity.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class HomepageComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
+  noData=false;
   listData: MatTableDataSource<any>;
   //filteredData: MatTableDataSource<any>;
   searchKey:String ;
@@ -45,7 +46,8 @@ export class HomepageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.retrieveOpportunities()
+    this.noData=false;
+    this.retrieveOpportunities();
   }
 
   onSearchClear(){
@@ -54,16 +56,14 @@ export class HomepageComponent implements OnInit {
   }
   applyFilter() {
      //const filterValue = (event.target as HTMLInputElement).value;
+     console.log(this.noData);
     this.listData.filter = this.searchKey.trim().toLowerCase();
- 
-    
+    this.noData = (this.listData.filteredData.length ===0)?true:false;
+    console.log(this.noData);
     if (this.listData.paginator) {
       this.listData.paginator.firstPage();
-      console.log(this.listData.filteredData.length);
-      if(this.listData.filteredData.length==0)
-      {
-        
-      }
+      //console.log(this.listData.filteredData.length);
+      
     }
   }
 
@@ -85,11 +85,20 @@ retrieveOpportunities() {
           return dataStr.indexOf(filter) !== -1;
         };
         
+        this.noData= (this.listData._filterData.length ===0)?true: false; 
+        console.log(this.noData);
                     //console.log("this.opportunities :",this.opportunities);
                     //console.log(typeof this.opportunities);
                     //console.log(this.listData);
  
-                   });
+                   },
+                   (err: HttpErrorResponse) => {
+                    this.noData = true;
+                    this.listData =new MatTableDataSource();
+                  }
+                   
+                   );
+                   
  
    }
 
@@ -107,8 +116,11 @@ retrieveOpportunities() {
    }
 
    logOut(){
+    localStorage.removeItem('user');
+  
      this.router.navigate(['']);
-   }
+    }
+    
    openTrends(){
     this.router.navigate(['trends']);
    }

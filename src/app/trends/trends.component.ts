@@ -64,7 +64,7 @@ export class TrendsComponent implements OnInit {
           value: val['countOfFrequency'][i]
         });
       }
-    console.log(this.arr2);
+    //console.log(this.arr2);
 }, error => {
 
 });
@@ -78,7 +78,7 @@ this.managementService.getAllminExperience().subscribe((val) => {
         value: val['countOfFrequency'][i]
       });
     }
-  console.log(this.arr3);
+  //console.log(this.arr3);
 }, error => {
 
 });

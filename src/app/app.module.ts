@@ -33,6 +33,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
 
@@ -53,6 +54,7 @@ import { MyInterceptorInterceptor } from './my-interceptor.interceptor';
     AppRoutingModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
     MatDatepickerModule,
     MatGridListModule,
     NgxChartsModule,

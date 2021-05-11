@@ -23,8 +23,8 @@
 
 
         <mat-form-field appearance="outline" style="width:400px;height: 50px;padding: 10px;">
-            <mat-label style="font-size: 20px;">Minimum Experience: </mat-label>
-            <textarea matNativeControl required matInput style="font-size: 15px;" formControlName="minExperience" [ngClass]="{'is-invalid':opportunityForm.get('minExperience').touched && opportunityForm.get('minExperience').invalid}" required>{{ticket.minExperience}} </textarea>
+            <mat-label  style="font-size: 20px;">Minimum Experience: </mat-label>
+            <input matInput type="number" min="0" max="5" matNativeControl required matInput style="font-size: 15px;" formControlName="minExperience" [ngClass]="{'is-invalid':opportunityForm.get('minExperience').touched && opportunityForm.get('minExperience').invalid}" required> 
         </mat-form-field><br><br>
         <mat-card-subtitle style="padding: 5px;padding-left: 10px;">Hiring Manager:{{ticket.hiringManager}}  </mat-card-subtitle>
         <mat-card-subtitle style="padding: 5px;padding-left: 10px;">Location:{{ticket.location}} </mat-card-subtitle>

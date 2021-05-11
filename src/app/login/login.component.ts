@@ -64,7 +64,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['homepage']);
         },
         (error) => {
-          this.managementService.success('Permission Denied!');
+          this.managementService.success('Invalid User!');
+          window.location.reload();
         }
       );
     });

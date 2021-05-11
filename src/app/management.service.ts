@@ -28,6 +28,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
         this.config.panelClass = ['notification', 'success'];
         this.snackBar.open(msg, '', this.config);
       }
+      
     
       warn(msg): void {
         this.config.panelClass = ['notification', 'warn'];

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import {Opportunity} from '../model/Opportunity';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
+import { MatDialog, MatDialogRef,MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormControl, FormGroup,ReactiveFormsModule, Validators } from '@angular/forms';
 
 import {ManagementService} from '../management.service';
@@ -14,11 +14,14 @@ import {ManagementService} from '../management.service';
 })
 export class CreateOpportunityComponent implements OnInit {
 
+ 
   createForm: FormGroup;
   co!: Opportunity ;
   
+ 
 
-  constructor(public dialog: MatDialogRef<CreateOpportunityComponent>,private managementService: ManagementService) { }
+  constructor(public dialog: MatDialogRef<CreateOpportunityComponent>,private managementService: ManagementService) { 
+  }
 
   ngOnInit(): void {
     this.createForm = new FormGroup({
@@ -32,6 +35,11 @@ export class CreateOpportunityComponent implements OnInit {
       hiringManager: new FormControl('',Validators.required),
     });
   }
+
+  getToday(): string {
+    return new Date().toISOString().split('T')[0]
+ }
+  
   get id() {
     return this.createForm.get('userId') as FormControl;
   }

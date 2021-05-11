@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule,Validators } from '@angular/forms';
 import { Opportunity} from '../model/Opportunity';
 import {ManagementService} from '../management.service';
 
@@ -41,15 +41,17 @@ export class EditOpportunityComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
+
     this.route.queryParams.subscribe((params) => {
       this.received_data = JSON.parse(params.data);
       //console.log('received data :', this.received_data);
       this.managementService.saveopportunityid(this.received_data[0]['id']);
     });
     this.opportunityForm = new FormGroup({
-      skill: new FormControl(this.received_data[0]['skill']),
-      desc: new FormControl(this.received_data[0]['desc']),
-      minExperience:new FormControl(this.received_data[0]['minExperience']),
+      skill: new FormControl(this.received_data[0]['skill'],Validators.required),
+      desc: new FormControl(this.received_data[0]['desc'],Validators.required),
+      minExperience:new FormControl(this.received_data[0]['minExperience'],[Validators.max(5), Validators.min(0)]),
     });
 
   }
